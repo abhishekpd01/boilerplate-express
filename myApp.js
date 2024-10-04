@@ -1,10 +1,11 @@
 let express = require('express');
 let app = express();
 
+const bodyParser = require("body-parser");
+
 require('dotenv').config();
 
-console.log("Hello World");
-
+app.use(bodyParser.urlencoded({extended: true}));
 app.use("/public", express.static(__dirname + "/public"));
 app.use(function middleWare(req, res, next) {
     var string = req.method + " " + req.path + " - " + req.ip;
