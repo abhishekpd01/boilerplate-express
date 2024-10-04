@@ -6,6 +6,12 @@ require('dotenv').config();
 console.log("Hello World");
 
 app.use("/public", express.static(__dirname + "/public"));
+app.use(function middleWare(req, res, next) {
+    var string = req.method + " " + req.path + " - " + req.ip;
+    console.log(string);
+
+    next();
+})
 
 app.get("/", function (req, res) {
     const absolutePath = __dirname + "/views/index.html";
