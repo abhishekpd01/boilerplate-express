@@ -50,7 +50,8 @@ app.route("/name")
         });
     })
     .post(function(req, res) {
-        req.query;
+        var string = req.body.first + " " + req.body.last;
+        res.json({name : string});
     })
 
 
